@@ -97,4 +97,43 @@ public class estudo : MonoBehaviour {
 		}
 
 	}
+
+
+
+	/**
+			Funções para Triggers, seis ao total.
+			//Funções de controle para colisores e para triggers.
+	*/
+
+	//Função responsável por detectar quando um objeto entrar em colisão com um colisor
+	public void OnCollisionEnter2D(){
+
+	//	print ("Entrei em colisão");
+
+	}
+
+	//Função responsável por detectar quando um objeto entrar em colisão com um trigger
+	public void OnTriggerEnter2D(){
+	//	print ("Entrei em colisão com um trigger");
+	}
+
+	//Função responsável por detectar quando um objeto sai de uma colisão com um colisor
+	public void OnCollisionExit2D(){
+	//	print ("Saí de uma colisão com um colisor");
+	}
+
+	//Função responsável por detectar quando um objeto sai de uma colisão com um trigger
+	public void OnTriggerExit2D(){
+	//	print ("Saí de uma colisão com um trigger");
+	}
+
+	//Função responsável por detectar se o objeto ainda está em colisão com um colisor.
+	public void OnCollisionStay2D(){
+	//	print ("Estou colidindo com um colisor");
+	}
+
+	//Função responsável por detectar se o objeto ainda está em colisão com um trigger.
+	public void OnTriggerStay2D(){
+	//	print ("Estou colidindo com um trigger");
+	}
 }

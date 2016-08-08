@@ -14,10 +14,13 @@ public class estudo : MonoBehaviour {
 
 
 	//booleana para saber pra onde o personagem está olhando
-	public bool olhandoDireita = true; //se estiver olhando para direita é true, cc false.
+	public bool olhandoDireita; //se estiver olhando para direita é true, cc false.
 
+	//Objeto Transform para manipularmos no nosso Personagem
 	public Transform trasnform;
 
+	//Variável para aplicar uma força no salto do nosso personagem.
+	private float forcaPulo = 200;
 
 	void Start () {
 
@@ -29,6 +32,7 @@ public class estudo : MonoBehaviour {
 
 		changeAnimation ();
 		controlarCorpoRigido ();
+		pular ();
 
 	}
 
@@ -36,7 +40,8 @@ public class estudo : MonoBehaviour {
 
 	public void controlarCorpoRigido(){
 		//Quando na descrição de um componente aparecer : get;set, voce utiliza o =;
-		this.playerRigidBody.velocity = new Vector2(horizontal * velocidadeDoRigid,0); // x, y (x para horizontal, y para vertical)
+		this.playerRigidBody.velocity = new Vector2(horizontal * velocidadeDoRigid, playerRigidBody.velocity.y); // x, y (x para horizontal, y para vertical)
+		//playerRigidBody.velocity.y ou seja, manterá a velocidade do y.
 	}
 
 
@@ -76,5 +81,20 @@ public class estudo : MonoBehaviour {
 		//agora, nosso scale na posĩção x é negativado, para ele inverter e virar o personagem!
 		theScale.x = theScale.x * -1; 
 		transform.localScale = theScale; //depois atribuimos o valor dele ao valor do nosso transform!
+	}
+
+
+	//Função para o personagem pular
+	public void pular(){
+
+		//GetButtonDown significa que eu apertei um determinado botão
+		//GetButtonUp significa que eu soltei um determinado botão
+		//GetButtonDown significa que eu estou pressionando ou soltando um determinado botão
+
+		if (Input.GetButtonDown("Jump")) {
+
+			playerRigidBody.AddForce (new Vector2 (0, forcaPulo));
+		}
+
 	}
 }

@@ -22,6 +22,9 @@ public class estudo : MonoBehaviour {
 	//Variável para aplicar uma força no salto do nosso personagem.
 	private float forcaPulo = 200;
 
+	//Variável para saber se o personagem está pisando no chao ou não.
+	public bool pisandoNoChao; 
+
 	void Start () {
 
 
@@ -91,7 +94,7 @@ public class estudo : MonoBehaviour {
 		//GetButtonUp significa que eu soltei um determinado botão
 		//GetButtonDown significa que eu estou pressionando ou soltando um determinado botão
 
-		if (Input.GetButtonDown("Jump")) {
+		if (pisandoNoChao && Input.GetButtonDown("Jump")) {
 
 			playerRigidBody.AddForce (new Vector2 (0, forcaPulo));
 		}
@@ -133,7 +136,9 @@ public class estudo : MonoBehaviour {
 	//	print ("Saí de uma colisão com um colisor");
 		if(collision.gameObject.tag.Equals("quadrado")){
 			print ("Saí de uma colisão com um quadrado");
-		}
+		}else if(collision.gameObject.tag.Equals("chao")){
+			pisandoNoChao = false;
+			}
 
 	}
 
@@ -151,6 +156,9 @@ public class estudo : MonoBehaviour {
 
 		if(collision.gameObject.tag.Equals("quadrado")){
 			print ("Estou me chocando com um quadrado");
+		}
+		else if(collision.gameObject.tag.Equals("chao")){
+			pisandoNoChao = true;
 		}
 	}
 

@@ -106,34 +106,61 @@ public class estudo : MonoBehaviour {
 	*/
 
 	//Função responsável por detectar quando um objeto entrar em colisão com um colisor
-	public void OnCollisionEnter2D(){
+	//Colisão usa Collision2D
+	public void OnCollisionEnter2D(Collision2D collision){
+
+		if(collision.gameObject.tag.Equals("quadrado")){
+			print ("Me choquei com um quadrado");
+		}
 
 	//	print ("Entrei em colisão");
 
 	}
 
 	//Função responsável por detectar quando um objeto entrar em colisão com um trigger
-	public void OnTriggerEnter2D(){
+	//Colisão usa Collider2D
+	public void OnTriggerEnter2D(Collider2D collider){
+
+		if(collider.gameObject.tag.Equals("gatilho")){
+			print ("Me choquei com um gatilho");
+		}
+
 	//	print ("Entrei em colisão com um trigger");
 	}
 
 	//Função responsável por detectar quando um objeto sai de uma colisão com um colisor
-	public void OnCollisionExit2D(){
+	public void OnCollisionExit2D(Collision2D collision){
 	//	print ("Saí de uma colisão com um colisor");
+		if(collision.gameObject.tag.Equals("quadrado")){
+			print ("Saí de uma colisão com um quadrado");
+		}
+
 	}
 
 	//Função responsável por detectar quando um objeto sai de uma colisão com um trigger
-	public void OnTriggerExit2D(){
+	public void OnTriggerExit2D(Collider2D collider){
 	//	print ("Saí de uma colisão com um trigger");
+		if(collider.gameObject.tag.Equals("gatilho")){
+			print ("Saí da colisão com um gatilho");
+		}
 	}
 
 	//Função responsável por detectar se o objeto ainda está em colisão com um colisor.
-	public void OnCollisionStay2D(){
+	public void OnCollisionStay2D(Collision2D collision){
 	//	print ("Estou colidindo com um colisor");
+
+		if(collision.gameObject.tag.Equals("quadrado")){
+			print ("Estou me chocando com um quadrado");
+		}
 	}
 
 	//Função responsável por detectar se o objeto ainda está em colisão com um trigger.
-	public void OnTriggerStay2D(){
+	public void OnTriggerStay2D(Collider2D collider){
 	//	print ("Estou colidindo com um trigger");
+		if(collider.gameObject.tag.Equals("gatilho")){
+			print ("Estou me chocando com um gatilho");
+		}
 	}
+
+
 }

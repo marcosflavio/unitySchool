@@ -25,6 +25,9 @@ public class estudo : MonoBehaviour {
 	//Variável para saber se o personagem está pisando no chao ou não.
 	public bool pisandoNoChao; 
 
+	//Objeto Transform para manipularmos o filho groundCheck do nosso Personagem
+	public Transform 	groundCheck;
+
 	void Start () {
 
 
@@ -36,6 +39,7 @@ public class estudo : MonoBehaviour {
 		changeAnimation ();
 		controlarCorpoRigido ();
 		pular ();
+		pisar ();
 
 	}
 
@@ -112,13 +116,9 @@ public class estudo : MonoBehaviour {
 	//Colisão usa Collision2D
 	public void OnCollisionEnter2D(Collision2D collision){
 
-		if(collision.gameObject.tag.Equals("quadrado")){
-			print ("Me choquei com um quadrado");
-		}
-
-		else if(collision.gameObject.tag.Equals("chao")){
-			pisandoNoChao = false;
-		}
+	//	if(collision.gameObject.tag.Equals("quadrado")){
+	//		print ("Me choquei com um quadrado");
+	//	}
 
 	//	print ("Entrei em colisão");
 
@@ -128,9 +128,9 @@ public class estudo : MonoBehaviour {
 	//Colisão usa Collider2D
 	public void OnTriggerEnter2D(Collider2D collider){
 
-		if(collider.gameObject.tag.Equals("gatilho")){
-			print ("Me choquei com um gatilho");
-		}
+	//	if(collider.gameObject.tag.Equals("gatilho")){
+	//		print ("Me choquei com um gatilho");
+	//	}
 
 	//	print ("Entrei em colisão com um trigger");
 	}
@@ -138,41 +138,56 @@ public class estudo : MonoBehaviour {
 	//Função responsável por detectar quando um objeto sai de uma colisão com um colisor
 	public void OnCollisionExit2D(Collision2D collision){
 	//	print ("Saí de uma colisão com um colisor");
-		if(collision.gameObject.tag.Equals("quadrado")){
-			print ("Saí de uma colisão com um quadrado");
-		}else if(collision.gameObject.tag.Equals("chao")){
-			pisandoNoChao = false;
-			}
+	//	if(collision.gameObject.tag.Equals("quadrado")){
+	//		print ("Saí de uma colisão com um quadrado");
+	//	}else if(collision.gameObject.tag.Equals("chao")){
+	//		pisandoNoChao = false;
+	//		}
 
 	}
 
 	//Função responsável por detectar quando um objeto sai de uma colisão com um trigger
 	public void OnTriggerExit2D(Collider2D collider){
 	//	print ("Saí de uma colisão com um trigger");
-		if(collider.gameObject.tag.Equals("gatilho")){
-			print ("Saí da colisão com um gatilho");
-		}
+	//	if(collider.gameObject.tag.Equals("gatilho")){
+	//		print ("Saí da colisão com um gatilho");
+	//	}
 	}
 
 	//Função responsável por detectar se o objeto ainda está em colisão com um colisor.
 	public void OnCollisionStay2D(Collision2D collision){
 	//	print ("Estou colidindo com um colisor");
 
-		if(collision.gameObject.tag.Equals("quadrado")){
-			print ("Estou me chocando com um quadrado");
-		}
-		else if(collision.gameObject.tag.Equals("chao")){
-			pisandoNoChao = true;
-		}
+	//	if(collision.gameObject.tag.Equals("quadrado")){
+	//		print ("Estou me chocando com um quadrado");
+	//	}
+	//	else if(collision.gameObject.tag.Equals("chao")){
+	//		pisandoNoChao = true;
+	//	}
 	}
 
 	//Função responsável por detectar se o objeto ainda está em colisão com um trigger.
 	public void OnTriggerStay2D(Collider2D collider){
 	//	print ("Estou colidindo com um trigger");
-		if(collider.gameObject.tag.Equals("gatilho")){
-			print ("Estou me chocando com um gatilho");
-		}
+	//	if(collider.gameObject.tag.Equals("gatilho")){
+	//		print ("Estou me chocando com um gatilho");
+	//	}
 	}
 
+	//Função responsável por criar um OverlapCircle para que possamos saber
+	//se está ocorrendo um contato ao chão ou não, utilizando o transform do objeto filho(groundCheck)
+	//para isso, pois ele servirá somente para isso
 
+	//Overlap é como se fosse um colisor, mas não colide, só detecta se há algo ou não;
+	//É passado um vector2 para pegar a posição da criação do overlap e um radius, que é
+	//o tamanho desse overlapcircle
+
+	public void pisar(){
+
+		//O método Physics2D.OverlapCircle recebem um vector2
+		//pra isso, pegamos o transform do filho(groundChek.position) que retorna
+		//um vector3 com a posição do objeto e um radius, que será o tamanho do circulo
+		//esse radius deve ser pequeno!!
+		pisandoNoChao = Physics2D.OverlapCircle (groundCheck.position, 0.02f);
+	}
 }

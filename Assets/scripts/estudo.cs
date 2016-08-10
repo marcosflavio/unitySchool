@@ -116,6 +116,10 @@ public class estudo : MonoBehaviour {
 			print ("Me choquei com um quadrado");
 		}
 
+		else if(collision.gameObject.tag.Equals("chao")){
+			pisandoNoChao = false;
+		}
+
 	//	print ("Entrei em colisão");
 
 	}

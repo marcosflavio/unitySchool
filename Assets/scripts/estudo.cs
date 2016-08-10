@@ -28,6 +28,10 @@ public class estudo : MonoBehaviour {
 	//Objeto Transform para manipularmos o filho groundCheck do nosso Personagem
 	public Transform 	groundCheck;
 
+	//Objeto para saber se nosso personagem pode pular em uma determinada área ou não.
+	//permite selecionar layers
+	public LayerMask whatIsGround;
+
 	void Start () {
 
 
@@ -39,7 +43,7 @@ public class estudo : MonoBehaviour {
 		changeAnimation ();
 		controlarCorpoRigido ();
 		pular ();
-		pisar ();
+		pisar2 ();
 
 	}
 
@@ -189,5 +193,19 @@ public class estudo : MonoBehaviour {
 		//um vector3 com a posição do objeto e um radius, que será o tamanho do circulo
 		//esse radius deve ser pequeno!!
 		pisandoNoChao = Physics2D.OverlapCircle (groundCheck.position, 0.02f);
+	}
+
+
+	public void pisar2(){
+
+		//O método Physics2D.OverlapCircle recebem um vector2
+		//pra isso, pegamos o transform do filho(groundChek.position) que retorna
+		//um vector3 com a posição do objeto e um radius, que será o tamanho do circulo
+		//esse radius deve ser pequeno!!
+		//Passo um LayerMask e com isso, só vou detectar as colisões dos layers marcados
+		//Pisando na lava seria:
+		//pisandoNaLava = Physics2D.OverlapCircle (groundCheck.position, 0.02f,whatIsMagma);
+		pisandoNoChao = Physics2D.OverlapCircle (groundCheck.position, 0.02f,whatIsGround);
+
 	}
 }

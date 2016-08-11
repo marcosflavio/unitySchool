@@ -78,7 +78,7 @@ public class estudo : MonoBehaviour {
 		}
 
 		//saber a velocidade de queda
-		print(playerRigidBody.velocity.y);
+		//print(playerRigidBody.velocity.y);
 
 		//Enviar o valor da velocidade de queda e de salto do personagem para o parametro no animator.
 		anim.SetFloat("velocidadeY",playerRigidBody.velocity.y);

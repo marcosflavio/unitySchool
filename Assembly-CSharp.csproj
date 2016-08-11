@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\armadilha.cs" />
      <Compile Include="Assets\scripts\estudo.cs" />
      <Compile Include="Assets\scripts\pulo.cs" />
  <Reference Include="UnityEngine.UI">

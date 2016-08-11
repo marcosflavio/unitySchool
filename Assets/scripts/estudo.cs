@@ -175,10 +175,12 @@ public class estudo : MonoBehaviour {
 	//		print ("Saí da colisão com um gatilho");
 	//	}
 
-		if (!collider.isTrigger) {
-			parede = false;
+	//	if (!collider.isTrigger) {
+	//		parede = false;
 
-		}
+//		}
+
+		parede = false;
 	}
 
 	//Função responsável por detectar se o objeto ainda está em colisão com um colisor.
@@ -200,7 +202,7 @@ public class estudo : MonoBehaviour {
 	//		print ("Estou me chocando com um gatilho");
 	//	}
 
-		if (!collider.isTrigger) {
+		if (!collider.isTrigger && collider.gameObject.Equals("pedra")) {
 			parede = true;
 
 		}

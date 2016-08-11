@@ -32,6 +32,9 @@ public class estudo : MonoBehaviour {
 	//permite selecionar layers
 	public LayerMask whatIsGround;
 
+	//Detectar se o meu personagem está colidindo com uma parede ou nao
+	public bool parede;
+
 	void Start () {
 
 
@@ -51,7 +54,12 @@ public class estudo : MonoBehaviour {
 
 	public void controlarCorpoRigido(){
 		//Quando na descrição de um componente aparecer : get;set, voce utiliza o =;
+
+
+		if(!parede){
 		this.playerRigidBody.velocity = new Vector2(horizontal * velocidadeDoRigid, playerRigidBody.velocity.y); // x, y (x para horizontal, y para vertical)
+		}
+
 		//playerRigidBody.velocity.y ou seja, manterá a velocidade do y.
 	}
 
@@ -166,6 +174,11 @@ public class estudo : MonoBehaviour {
 	//	if(collider.gameObject.tag.Equals("gatilho")){
 	//		print ("Saí da colisão com um gatilho");
 	//	}
+
+		if (!collider.isTrigger) {
+			parede = false;
+
+		}
 	}
 
 	//Função responsável por detectar se o objeto ainda está em colisão com um colisor.
@@ -186,6 +199,12 @@ public class estudo : MonoBehaviour {
 	//	if(collider.gameObject.tag.Equals("gatilho")){
 	//		print ("Estou me chocando com um gatilho");
 	//	}
+
+		if (!collider.isTrigger) {
+			parede = true;
+
+		}
+
 	}
 
 	//Função responsável por criar um OverlapCircle para que possamos saber
